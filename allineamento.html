@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Allineamento • Moduso</title>
+  <style>
+    :root{--bg:#0b0c10;--card:#12141d;--stroke:rgba(255,255,255,.10);--text:#e9edf5;--muted:rgba(233,237,245,.72);--brand:#7c3aed;--brand2:#f97316;--shadow:0 18px 60px rgba(0,0,0,.50)}
+    *{box-sizing:border-box}
+    body{margin:0;background:
+      radial-gradient(1000px 400px at 20% 10%, rgba(124,58,237,.18), transparent 60%),
+      radial-gradient(900px 420px at 85% 15%, rgba(249,115,22,.16), transparent 60%),
+      radial-gradient(900px 520px at 40% 90%, rgba(59,130,246,.10), transparent 60%),
+      linear-gradient(180deg, #07080d 0%, #07080d 45%, #05060a 100%);
+      color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    a{color:inherit}
+    .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 54px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0 6px;position:sticky;top:0;backdrop-filter:saturate(1.2) blur(10px);z-index:10}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--stroke);background:rgba(18,20,29,.55)}
+    nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+    nav a{border:1px solid transparent;border-radius:999px;padding:7px 12px;font-size:13px;color:var(--muted)}
+    nav a:hover{border-color:var(--stroke);color:var(--text)}
+
+    .hero{border:1px solid var(--stroke);border-radius:22px;background:linear-gradient(180deg, rgba(18,20,29,.85), rgba(14,16,22,.85));
+      box-shadow:var(--shadow);overflow:hidden;position:relative;padding:26px; margin-top:10px}
+    .hero:before{content:"";position:absolute;inset:-120px -140px auto; height:320px;
+      background: radial-gradient(circle at 50% 50%, rgba(124,58,237,.18), transparent 60%);
+      transform: rotate(18deg);}
+    .hero > *{position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(18,20,29,.60);border:1px solid var(--stroke);
+      padding:7px 11px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .eyebrow b{color:var(--text)}
+    h1{font-size:34px;line-height:1.06;margin:14px 0 8px}
+    .lead{margin:0;color:var(--muted);font-size:15px;line-height:1.55;max-width:70ch}
+    .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .btn{border:1px solid var(--stroke);border-radius:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 14px;font-weight:750;font-size:14px;text-decoration:none;transition:.18s ease;}
+    .btnPrimary{border:0;color:#0b0c10;background:linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow:0 12px 40px rgba(124,58,237,.28)}
+    .btnPrimary:hover{transform: translateY(-1px); box-shadow:0 14px 44px rgba(124,58,237,.36)}
+    .btnGhost{background:rgba(0,0,0,.0);color:var(--text)}
+    .btnGhost:hover{background:rgba(255,255,255,.04)}
+
+    .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--stroke);border-radius:20px;background:rgba(18,20,29,.60);padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+    .card h2{margin:0 0 10px;font-size:16px}
+    .muted{color:var(--muted);font-size:13px;line-height:1.55;margin:0}
+    ul{margin:10px 0 0;padding-left:20px;color:var(--muted);line-height:1.6}
+    ul li{margin:7px 0}
+
+    .coursesSection{margin-top:22px}
+    .cards3{display:grid;grid-template-columns:repeat(3, minmax(0, 1fr));gap:12px;margin-top:12px}
+    .smallCard{border:1px solid var(--stroke);border-radius:18px;background:rgba(18,20,29,.55);
+      padding:14px;box-shadow:0 10px 28px rgba(0,0,0,.20)}
+    .smallCard h3{margin:0 0 8px;font-size:14px}
+    .meta{color:var(--muted);font-size:12px;margin:0}
+    .meta b{color:var(--text)}
+    .smallCard .actions{margin-top:12px}
+
+    footer{margin-top:22px;color:var(--muted);font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+    @media (max-width: 920px){
+      .grid2{grid-template-columns:1fr;}
+      .cards3{grid-template-columns:1fr;}
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <span class="badge">Moduso</span>
+        <span>Vendita • Allineamento</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="giove.html">Giove</a>
+        <a href="titano.html">Titano</a>
+        <a href="allineamento.html"><b>Allineamento</b></a>
+        <a href="mercurio.html">Mercurio</a>
+        <a href="venere.html">Venere</a>
+        <a href="marte.html">Marte</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">Bundle completo <b>Allineamento</b> — 3 corsi + Titano gratis</span>
+      <h1>Allineamento: il percorso completo per creare e vendere (senza disperdere focus).</h1>
+      <p class="lead">Dentro Allineamento hai tutto ciò che ti serve: i tre corsi operativi, più Titano in regalo per costruire la macchina di vendita, e un filo logico unico che ti evita di saltare da un framework all’altro.</p>
+      <div class="actions">
+        <a class="btn btnPrimary" href="#checkout">Procedi (Stripe)</a>
+        <a class="btn btnGhost" href="#corsi">Vedi i corsi singoli</a>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h2>Cosa include (Allineamento)</h2>
+          <p class="muted">Allineamento non è un altro corso: è un sistema. Dentro trovi:</p>
+          <ul>
+            <li><b>Mercurio</b> (foundations e struttura: come costruisci il prodotto e l’angolo)</li>
+            <li><b>Venere</b> (messaggi e contenuti: come fai capire subito valore e urgenza)</li>
+            <li><b>Marte</b> (vendita: come converti, gestisci obiezioni e porti a check-out)</li>
+            <li><b>Titano gratis</b> (impalcatura operativa: sistemi e modelli pronti)</li>
+            <li>materiali + aggiornamenti</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Per chi è</h2>
+          <p class="muted">Per chi sta già creando, ma sente il caos: troppi spunti, poche decisioni. Allineamento ti fa scegliere una strada e ti ci porta.</p>
+          <ul>
+            <li>non servono tool avanzati (ti basta eseguire)</li>
+            <li>output: landing, copy e flusso pronti</li>
+            <li>checkout Stripe integrato appena approvato</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="corsi" class="coursesSection">
+      <h2 style="margin:0 0 6px;font-size:18px">Corsi singoli</h2>
+      <p class="muted">Se vuoi solo un blocco, scegli il corso e vai alla pagina dedicata.</p>
+
+      <div class="cards3">
+        <div class="smallCard">
+          <h3>Mercurio</h3>
+          <p class="meta">Il primo livello: <b>fondamenta + prodotto</b>.</p>
+          <div class="actions">
+            <a class="btn btnGhost" href="mercurio.html">Vai alla pagina</a>
+          </div>
+        </div>
+        <div class="smallCard">
+          <h3>Venere</h3>
+          <p class="meta">Messaggi e contenuti: <b>spieghi bene, senza fronzoli</b>.</p>
+          <div class="actions">
+            <a class="btn btnGhost" href="venere.html">Vai alla pagina</a>
+          </div>
+        </div>
+        <div class="smallCard">
+          <h3>Marte</h3>
+          <p class="meta">Vendita e conversione: <b>il passaggio decisivo</b>.</p>
+          <div class="actions">
+            <a class="btn btnGhost" href="marte.html">Vai alla pagina</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 Moduso • landing pages</div>
+      <div><a href="index.html" style="color:var(--muted);text-decoration:none">Torna alla home</a></div>
+    </footer>
+  </div>
+</body>
+</html>
