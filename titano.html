@@ -1,88 +1,227 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Titano — Reel Script AI · Moduso</title>
-  <style>
-    :root{--bg:#0b0d10;--card:#10141a;--muted:#aeb6c2;--text:#e9eef7;--accent:#7c3aed;--accent2:#22c55e}
-    *{box-sizing:border-box} body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:radial-gradient(1200px 800px at 10% 0%,rgba(124,58,237,.26),rgba(34,197,94,.12),transparent 55%),var(--bg);color:var(--text)}
-    a{color:var(--text);text-decoration:none} a:hover{text-decoration:underline}
-    header{background:rgba(11,13,16,.72);backdrop-filter:saturate(1.3) blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
-    .nav{max-width:1100px;margin:0 auto;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
-    .brand{font-weight:800;letter-spacing:.02em} .brand span{opacity:.85;font-weight:700}
-    .menu{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
-    .pill{border:1px solid rgba(255,255,255,.1);border-radius:999px;padding:8px 12px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.03))}
-    .pill:hover{border-color:rgba(255,255,255,.2)}
-    main{max-width:1100px;margin:0 auto;padding:30px 18px 60px}
-    .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
-    h1{margin:8px 0 10px;font-size:clamp(30px,4vw,48px);line-height:1.04}
-    .lede{margin:0;opacity:.92;line-height:1.6;font-size:16px;max-width:62ch}
-    .card{border-radius:18px;border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));padding:18px}
-    .card h2{margin:0 0 10px} .card ul{margin:0 0 0 18px;opacity:.88}
-    .cta{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:12px 16px;margin-top:16px;background:linear-gradient(90deg,var(--accent),var(--accent2));font-weight:700}
-    .cta:hover{text-decoration:none;opacity:.92}
-    footer{border-top:1px solid rgba(255,255,255,.08);background:#0a0c10;color:rgba(233,238,247,.76)}
-    .foot{max-width:1100px;margin:0 auto;padding:18px 18px 28px;font-size:13px}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Titano — Moduso</title>
+<meta name="description" content="Il tool AI che scrive idee e script per i tuoi reel, partendo dalla tua attività.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --void:#0A0A0A; --ivory:#F5F5F0; --ivory-dark:#ECECE5; --white:#FFFFFF;
+  --pulse:#6E6BFF; --pulse-soft:#EEEEFF; --signal:#C8FF57;
+  --prod:#E08A34; --prod-deep:#B86A1F; --prod-soft:#FBEFE2;
+  --muted:#6B6B66; --border:#E8E8E3; --border-light:#F0F0EB;
+  --radius:14px; --radius-sm:10px; --radius-lg:24px;
+  --shadow:0 1px 3px rgba(0,0,0,0.05),0 10px 36px rgba(0,0,0,0.05);
+  --shadow-lg:0 24px 70px rgba(0,0,0,0.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--ivory);color:var(--void);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{letter-spacing:-0.03em;font-weight:800;line-height:1.1}
+.ita{font-style:italic}
+.accent{color:var(--prod)}
+::selection{background:var(--prod);color:#fff}
+a{color:inherit;text-decoration:none}
+@media(prefers-reduced-motion:no-preference){
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+}
+.nav{position:sticky;top:0;z-index:100;background:rgba(245,245,240,0.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-light);height:64px;display:flex;align-items:center;padding:0 2rem;gap:2rem}
+.nav-logo{font-size:1.15rem;font-weight:900;letter-spacing:-0.04em}
+.nav-logo span{color:var(--pulse)}
+.nav-back{font-size:0.88rem;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:0.4rem;transition:color .15s}
+.nav-back:hover{color:var(--void)}
+.nav-links{display:flex;gap:1.5rem;margin-left:auto}
+.nav-links a{font-size:0.88rem;font-weight:600;color:var(--muted);transition:color .15s}
+.nav-links a:hover{color:var(--void)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.5rem;padding:0.85rem 1.7rem;border-radius:var(--radius-sm);font-family:'Inter',sans-serif;font-size:0.92rem;font-weight:700;cursor:pointer;border:none;transition:all .18s;letter-spacing:-0.01em;white-space:nowrap}
+.btn-prod{background:var(--prod);color:#fff}
+.btn-prod:hover{background:var(--prod-deep);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-ghost{background:transparent;color:var(--void);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--void)}
+.btn-lg{padding:1rem 2.1rem;font-size:1.02rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+.section{padding:5rem 0}
+
+/* HERO prodotto */
+.phero{position:relative;padding:5rem 0 4rem;overflow:hidden}
+.phero-planet{position:absolute;top:-160px;right:-140px;width:480px;height:480px;border-radius:50%;
+  background:radial-gradient(circle at 38% 38%,var(--prod),var(--prod-deep) 100%);opacity:0.13;filter:blur(8px);z-index:0}
+.phero-inner{position:relative;z-index:1;max-width:680px}
+.phero-badge{display:inline-flex;align-items:center;gap:0.55rem;font-size:0.78rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--prod-deep);background:var(--prod-soft);padding:0.5rem 1.1rem;border-radius:100px;margin-bottom:1.5rem}
+.phero-planet-badge{width:22px;height:22px;border-radius:50%;background:var(--prod);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800}
+.phero h1{font-size:clamp(2.4rem,5.5vw,3.8rem);margin-bottom:1.25rem}
+.phero-sub{font-size:clamp(1.05rem,2vw,1.3rem);color:#3a3a3a;line-height:1.5;margin-bottom:2rem}
+.phero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.phero-price-inline{font-size:1.1rem;font-weight:800}
+.phero-price-inline s{color:var(--muted);font-weight:600;font-size:0.9rem;margin-right:0.4rem}
+
+/* COSA IMPARI / FEATURES */
+.feats{display:flex;flex-direction:column;gap:1.25rem;margin-top:3rem;max-width:760px}
+.feat{display:flex;gap:1.25rem;align-items:flex-start;background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.75rem;transition:all .18s}
+.feat:hover{border-color:var(--prod);transform:translateX(4px)}
+.feat-icon{width:46px;height:46px;border-radius:12px;background:var(--prod-soft);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.feat h3{font-size:1.15rem;margin-bottom:0.3rem}
+.feat p{font-size:0.95rem;color:var(--muted);line-height:1.5}
+
+.sec-head{margin-bottom:1rem}
+.sec-eyebrow{font-size:0.76rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--prod);margin-bottom:0.85rem}
+.sec-title{font-size:clamp(1.8rem,3.5vw,2.5rem);margin-bottom:1rem}
+.sec-lead{font-size:1.08rem;color:#3a3a3a;max-width:54ch;line-height:1.55}
+
+/* PREZZO / OFFERTA */
+.offer{background:var(--void);color:var(--ivory);border-radius:var(--radius-lg);padding:3.5rem;position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;gap:3rem;align-items:center}
+.offer-glow{position:absolute;bottom:-120px;left:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,var(--prod),transparent 70%);opacity:0.3}
+.offer-content{position:relative}
+.offer h2{font-size:clamp(1.7rem,3.5vw,2.4rem);margin-bottom:1rem;color:#fff}
+.offer-list{list-style:none;display:flex;flex-direction:column;gap:0.7rem;margin-top:1.5rem}
+.offer-list li{font-size:0.98rem;color:rgba(245,245,240,0.85);display:flex;gap:0.6rem;align-items:flex-start}
+.offer-list li::before{content:'✓';color:var(--prod);font-weight:800;flex-shrink:0}
+.offer-card{background:#fff;color:var(--void);border-radius:var(--radius);padding:2.25rem;text-align:center;position:relative}
+.price-big{font-size:3rem;font-weight:900;letter-spacing:-0.04em;line-height:1;color:var(--prod)}
+.price-big s{display:block;font-size:1.2rem;color:var(--muted);font-weight:600;letter-spacing:0;margin-bottom:0.3rem}
+.price-note{font-size:0.82rem;color:var(--muted);margin:0.85rem 0 1.5rem;line-height:1.4}
+
+/* altri prodotti */
+.cross{border-top:1px solid var(--border);padding:3rem 0;text-align:center}
+.cross h3{font-size:1.3rem;margin-bottom:1.5rem}
+.cross-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.cross-link{display:flex;align-items:center;gap:0.6rem;background:var(--white);border:1px solid var(--border);border-radius:100px;padding:0.6rem 1.2rem;font-size:0.88rem;font-weight:600;transition:all .15s}
+.cross-link:hover{border-color:var(--void);transform:translateY(-2px)}
+.cross-dot{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.55rem;font-weight:800;color:#fff}
+
+.footer{background:var(--void);color:var(--ivory);padding:3rem 0 2rem;text-align:center}
+.footer-logo{font-size:1.2rem;font-weight:900;letter-spacing:-0.04em;margin-bottom:0.5rem}
+.footer-logo span{color:var(--pulse)}
+.footer p{font-size:0.85rem;color:rgba(245,245,240,0.55)}
+.footer-links{display:flex;gap:1.25rem;justify-content:center;margin:1.25rem 0;flex-wrap:wrap}
+.footer-links a{font-size:0.85rem;color:rgba(245,245,240,0.8)}
+.footer-links a:hover{color:var(--pulse)}
+
+@media(max-width:860px){
+  .nav{padding:0 1.25rem;gap:1rem}.nav-links{display:none}
+  .wrap{padding:0 1.25rem}.section{padding:3.5rem 0}
+  .offer{grid-template-columns:1fr;gap:2rem;padding:2.25rem}
+}
+</style>
 </head>
 <body>
-  <header>
-    <div class="nav">
-      <div class="brand">MODUSO<span>.site</span></div>
-      <nav class="menu">
-        <a class="pill" href="index.html">Home</a>
-        <a class="pill" href="allineamento.html">Allineamento</a>
-        <a class="pill" href="titano.html" aria-current="page">Titano</a>
-        <a class="pill" href="giove.html">Giove</a>
-        <a class="pill" href="mercurio.html">Mercurio</a>
-        <a class="pill" href="venere.html">Venere</a>
-        <a class="pill" href="marte.html">Marte</a>
-      </nav>
+
+<nav class="nav">
+  <div class="nav-logo">MODUSO<span>.</span></div>
+  <a href="index.html" class="nav-back">← Tutti i prodotti</a>
+  <div class="nav-links">
+    <a href="allineamento.html">Allineamento</a>
+    <a href="titano.html">Titano</a>
+    <a href="giove.html">Giove</a>
+  </div>
+</nav>
+
+<header class="phero">
+  <div class="phero-planet"></div>
+  <div class="wrap phero-inner">
+    <div class="phero-badge"><span class="phero-planet-badge">Ti</span>Titano · tool AI</div>
+    <h1 class="reveal">Idee e script per i tuoi reel, <span class="accent ita">in un minuto.</span></h1>
+    <p class="phero-sub reveal">Titano è il tool AI di Moduso che trova le idee e scrive lo script completo del tuo prossimo reel — hook, regia scena per scena e indicazioni audio — partendo dalla tua attività reale.</p>
+    <div class="phero-actions reveal">
+      <a href="#checkout" class="btn btn-prod btn-lg">Acquista ora →</a>
+      <span class="phero-price-inline">da €9,90 · Pro €29/mese</span>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main>
-    <section class="hero">
-      <div>
-        <h1>Titano (Reel Script AI)</h1>
-        <p class="lede">
-          La tua stanza degli script: entra, scegli uno scenario e ottieni uno script pronto per registrare reel/tiktok
-          senza blocchi. Questa pagina è pensata per vendita → checkout, con CTA unica e copy pulito.
-        </p>
-        <a class="cta" href="#">Inizia ora (Stripe)</a>
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-eyebrow reveal">Cosa fa per te</div>
+      <h2 class="sec-title reveal">Da "non so cosa postare" a reel pronto da girare.</h2>
+      <p class="sec-lead reveal">Inserisci la tua attività e l'argomento. Titano pensa al resto — e ti dà tutto quello che serve per girare col solo telefono.</p>
+    </div>
+    <div class="feats">
+        <div class="feat reveal">
+          <div class="feat-icon">💡</div>
+          <div>
+            <h3>3 idee + script completo</h3>
+            <p>Tre angoli di apertura diversi, poi lo script sviluppato sull'idea che scegli tu.</p>
+          </div>
+        </div>
+        <div class="feat reveal">
+          <div class="feat-icon">🎬</div>
+          <div>
+            <h3>Regia scena per scena</h3>
+            <p>Cosa inquadrare, durata, testo a schermo e b-roll: una vera scaletta da set.</p>
+          </div>
+        </div>
+        <div class="feat reveal">
+          <div class="feat-icon">🎵</div>
+          <div>
+            <h3>Audio, voce e musica</h3>
+            <p>Ti dice se serve voiceover o testo, e ti suggerisce audio trend e suoni da catturare.</p>
+          </div>
+        </div>
+        <div class="feat reveal">
+          <div class="feat-icon">🔥</div>
+          <div>
+            <h3>Reference TikTok reali</h3>
+            <p>Trova video italiani veri del tuo settore da cui prendere ispirazione (versione Pro).</p>
+          </div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="checkout">
+  <div class="wrap">
+    <div class="offer reveal">
+      <div class="offer-glow"></div>
+      <div class="offer-content">
+        <h2>Provalo a meno di un caffè.</h2>
+        <p style="color:rgba(245,245,240,0.7);font-size:1.05rem">Inizia con 10 script. Quando vuoi di più, passi al Pro con la ricerca TikTok e 30 script al mese.</p>
+        <ul class="offer-list"><li>10 script con il piano base a €9,90</li><li>Pro: 30 script/mese + ricerca TikTok a €29/mese</li><li>Generi da telefono e desktop</li><li>Esporti lo script in PDF</li></ul>
       </div>
-      <aside class="card">
-        <h2>Che problema risolve</h2>
-        <ul>
-          <li>
-            Togliere la frizione di scrivere ogni volta da zero
-          </li>
-          <li>
-            Tenere output consistente (stile, struttura, hook)
-          </li>
-          <li>
-            Sbloccare produzione veloce per creator/agency
-          </li>
-        </ul>
-      </aside>
-    </section>
+      <div class="offer-card">
+        <div class="price-big">€9,90</div><div class="price-note">10 script · poi Pro €29/mese per 30 script + ricerca TikTok</div>
+        <a href="#checkout" class="btn btn-prod btn-lg" style="width:100%">Acquista ora →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section class="card" style="margin-top:18px">
-      <h2>Cosa ricevi</h2>
-      <ul>
-        <li>Script generati al volo (hook → sviluppo → CTA)</li>
-        <li>Versioni alternative per testare (A/B) l’aggancio</li>
-        <li>Output pensato per essere leggibile e recitabile</li>
-      </ul>
-      <p style="opacity:.84;margin-top:14px">
-        Nota: al momento il bottone non porta al checkout (Stripe). Lo colleghiamo dopo l’approvazione del layout.
-      </p>
-    </section>
-  </main>
+<div class="cross">
+  <div class="wrap">
+    <h3>Esplora gli altri mondi Moduso</h3>
+    <div class="cross-links">
+      <a href="allineamento.html" class="cross-link"><span class="cross-dot" style="background:var(--pulse)">✦</span>Allineamento</a>
+      <a href="giove.html" class="cross-link"><span class="cross-dot" style="background:#D98A3D">Gi</span>Giove</a>
+      <a href="mercurio.html" class="cross-link"><span class="cross-dot" style="background:#C0653A">Me</span>Mercurio</a>
+      <a href="venere.html" class="cross-link"><span class="cross-dot" style="background:#E0A85A">Ve</span>Venere</a>
+      <a href="marte.html" class="cross-link"><span class="cross-dot" style="background:#C0392B">Ma</span>Marte</a>
+      
+    </div>
+  </div>
+</div>
 
-  <footer>
-    <div class="foot">© 2026 Moduso — Titano</div>
-  </footer>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-logo">MODUSO<span>.</span></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="allineamento.html">Allineamento</a>
+      <a href="titano.html">Titano</a>
+      <a href="giove.html">Giove</a>
+      <a href="mercurio.html">Mercurio</a>
+      <a href="venere.html">Venere</a>
+      <a href="marte.html">Marte</a>
+    </div>
+    <p>© 2026 Moduso · L'ecosistema per crescere online</p>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*0.07)+'s';io.observe(el);});
+</script>
 </body>
 </html>
