@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mercurio • Moduso</title>
+  <style>
+    :root{--bg:#0b0c10;--card:#12141d;--stroke:rgba(255,255,255,.10);--text:#e9edf5;--muted:rgba(233,237,245,.72);--brand:#7c3aed;--brand2:#f97316;--shadow:0 18px 60px rgba(0,0,0,.50)}
+    *{box-sizing:border-box}
+    body{margin:0;background:
+      radial-gradient(950px 400px at 20% 10%, rgba(124,58,237,.18), transparent 60%),
+      radial-gradient(900px 420px at 85% 15%, rgba(249,115,22,.16), transparent 60%),
+      radial-gradient(900px 520px at 40% 90%, rgba(59,130,246,.10), transparent 60%),
+      linear-gradient(180deg, #07080d 0%, #07080d 45%, #05060d 100%);
+      color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    .wrap{max-width:1040px;margin:0 auto;padding:24px 18px 48px}
+    header{display:flex;align-items:center;justify-content:space-between;padding:12px 0 6px;position:sticky;top:0;backdrop-filter:saturate(1.2) blur(10px);z-index:10}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .badge{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--stroke);background:rgba(18,20,29,.55)}
+    nav{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+    nav a{border:1px solid transparent;border-radius:999px;padding:7px 12px;font-size:13px;color:var(--muted)}
+    nav a:hover{border-color:var(--stroke);color:var(--text)}
+    nav a.active{border-color:var(--stroke);color:var(--text)}
+
+    .hero{border:1px solid var(--stroke);border-radius:22px;background:linear-gradient(180deg, rgba(18,20,29,.85), rgba(14,16,22,.85));
+      box-shadow:var(--shadow);overflow:hidden;position:relative;padding:26px; margin-top:10px}
+    .hero:before{content:"";position:absolute;inset:-120px -140px auto; height:320px;
+      background: radial-gradient(circle at 50% 50%, rgba(124,58,237,.18), transparent 60%);
+      transform: rotate(14deg);}
+    .hero > *{position:relative}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(18,20,29,.60);border:1px solid var(--stroke);
+      padding:7px 11px;border-radius:999px;font-size:13px;color:var(--muted)}
+    .eyebrow b{color:var(--text)}
+    h1{font-size:34px;line-height:1.06;margin:14px 0 8px}
+    .lead{margin:0;color:var(--muted);font-size:15px;line-height:1.55;max-width:70ch}
+    .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .btn{border:1px solid var(--stroke);border-radius:14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 14px;font-weight:750;font-size:14px;text-decoration:none;transition:.18s ease;}
+    .btnPrimary{border:0;color:#0b0c10;background:linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow:0 12px 40px rgba(124,58,237,.28)}
+    .btnPrimary:hover{transform: translateY(-1px); box-shadow:0 14px 44px rgba(124,58,237,.36)}
+    .btnGhost{background:rgba(0,0,0,.0);color:var(--text)}
+    .btnGhost:hover{background:rgba(255,255,255,.04)}
+
+    .grid2{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-top:16px}
+    .card{border:1px solid var(--stroke);border-radius:20px;background:rgba(18,20,29,.60);padding:18px;box-shadow:0 10px 30px rgba(0,0,0,.28)}
+    .card h2{margin:0 0 10px;font-size:16px}
+    .muted{color:var(--muted);font-size:13px;line-height:1.55;margin:0}
+    ul{margin:10px 0 0;padding-left:20px;color:var(--muted);line-height:1.6}
+    ul li{margin:7px 0}
+    footer{margin-top:22px;color:var(--muted);font-size:12px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    @media (max-width: 920px){
+      .grid2{grid-template-columns:1fr;}
+      h1{font-size:28px}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <span class="badge">Moduso</span>
+        <span>Corso • Mercurio</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="giove.html">Giove</a>
+        <a href="titano.html">Titano</a>
+        <a href="allineamento.html">Allineamento</a>
+        <a href="mercurio.html" class="active">Mercurio</a>
+        <a href="venere.html">Venere</a>
+        <a href="marte.html">Marte</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <span class="eyebrow">Corso singolo <b>Mercurio</b></span>
+      <h1>Mercurio: fondamenta e struttura (se sbagli qui, sprechi tutto il resto).</h1>
+      <p class="lead">Ti aiuta a definire prodotto, promessa e struttura di delivery. Quando hai queste fondamenta, non ti serve più “ispirazione”: ti serve esecuzione.</p>
+      <div class="actions">
+        <a class="btn btnPrimary" href="#checkout">Procedi (Stripe)</a>
+        <a class="btn btnGhost" href="allineamento.html">Preferisco Allineamento completo</a>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h2>Cosa impari</h2>
+          <p class="muted">La parte che tutti saltano, e che ti fa perdere anni.</p>
+          <ul>
+            <li>prodotto e promessa: cosa vendi davvero</li>
+            <li>posizionamento: da “generico” a “scelto”</li>
+            <li>modelli e checklist per decidere velocemente</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Output concreto</h2>
+          <p class="muted">Non teoria: consegne.</p>
+          <ul>
+            <li>la struttura del corso / programma</li>
+            <li>messaggio di base e angolo</li>
+            <li>piano per costruire il resto (Venere + Marte)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>© 2026 Moduso • landing pages</div>
+      <div><a href="index.html" style="color:var(--muted);text-decoration:none">Torna alla home</a></div>
+    </footer>
+  </div>
+</body>
+</html>
